@@ -30,7 +30,7 @@ export default function Home() {
                 .pauseFor(300)
                 .deleteAll(250)
                 .typeString('Enjoy.')
-                .pauseFor(1000)
+                .pauseFor(5000)
                 .deleteAll(250)
                 .start();
             }}
