@@ -26,12 +26,12 @@ export default function Home() {
                 .deleteAll(250)
                 .typeString('Hi!')
                 .deleteAll(250)
-                .typeString('Welcome to my site')
+                .typeString('Welcome')
                 .pauseFor(300)
                 .deleteAll(250)
                 .typeString('Enjoy.')
-                .deleteAll(250)
                 .pauseFor(1000)
+                .deleteAll(250)
                 .start();
             }}
             />
