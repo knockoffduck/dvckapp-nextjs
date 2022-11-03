@@ -20,7 +20,19 @@ export default function Home() {
 
           <div className='text-9xl font-bold text-white tracking-tight'>
             <Typewriter options={{ loop: true, autoStart: true }} onInit={(typewriter) => {
-              typewriter.typeString('Hello').pauseFor(300).deleteAll(250).start();
+              typewriter
+                .typeString('Hello')
+                .pauseFor(300)
+                .deleteAll(250)
+                .typeString('Hi!')
+                .deleteAll(250)
+                .typeString('Welcome to my site')
+                .pauseFor(300)
+                .deleteAll(250)
+                .typeString('Enjoy.')
+                .deleteAll(250)
+                .pauseFor(1000)
+                .start();
             }}
             />
           </div>
