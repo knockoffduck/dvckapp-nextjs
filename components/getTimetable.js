@@ -43,8 +43,10 @@ export const ImageSlider = () => {
             setFetched(true)
             console.log('FETCHED')
             console.log('result is: ', data);
-            setData(data)
+            setData(data.reverse())
             setLength(await data.length)
+            setTimeout(50)
+            console.log(await data)
 
         } catch (err) {
             console.log(err.message)
@@ -58,15 +60,15 @@ export const ImageSlider = () => {
                 <motion.div
                     animate={{ opacity: 1 }}
                     initial={{ opacity: 0 }}>
-                    <FaArrowAltCircleLeft onClick={prevSlide} className="absolute top-1/2 left-8 text-5xl z-10 cursor-pointer select-none" />
-                    <FaArrowAltCircleRight onClick={nextSlide} className="absolute top-1/2 right-8 text-5xl z-10 cursor-pointer select-none" />
+                    <FaArrowAltCircleLeft onClick={nextSlide} className="absolute top-1/2 left-8 text-5xl z-10 cursor-pointer select-none" />
+                    <FaArrowAltCircleRight onClick={prevSlide} className="absolute top-1/2 right-8 text-5xl z-10 cursor-pointer select-none" />
                 </motion.div>
             }
             {!fetched
                 ? <button onClick={onbuttonclick} className="btn">Get Timetable</button>
                 :
                 data.map((timetable, index) => {
-                    return (<div key={index} className='grid gap-6' >
+                    return (<div key={index} className='grid gap-6 justify-items-center' >
                         {index === current && (
                             <h3 className='text-center text-4xl font-bold'> {timetable.date}</h3>
                         )}
@@ -74,8 +76,8 @@ export const ImageSlider = () => {
                             <motion.div
                                 animate={{ opacity: 1 }}
                                 initial={{ opacity: 0 }}
-                                className="relative">
-                                <Image src={timetable.timetable_url} width={1280} height={600} alt={timetable.date} priority className="object-contain rounded-lg" />
+                                className="relative tablet:h-[70vh] tablet:w-[65vw]">
+                                <Image src={timetable.timetable_url} fill alt={timetable.date} priority className="rounded-lg" />
                             </motion.div>
                         )}
 
