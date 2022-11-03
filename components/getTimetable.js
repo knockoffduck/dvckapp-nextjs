@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 
 
@@ -20,6 +20,7 @@ async function fetchProducts(url) {
 
 export const ImageSlider = () => {
     const [fetched, setFetched] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [clicked, setClicked] = useState(false)
     const [current, setCurrrent] = useState(0)
     const [data, setData] = useState([])
@@ -39,14 +40,14 @@ export const ImageSlider = () => {
         setClicked(true)
         console.log(clicked)
         try {
+            setLoading(true)
             const data = await fetchProducts(url)
             setFetched(true)
             console.log('FETCHED')
             console.log('result is: ', data);
             setData(data.reverse())
             setLength(await data.length)
-            setTimeout(50)
-            console.log(await data)
+            await setLoading(false)
 
         } catch (err) {
             console.log(err.message)
@@ -60,12 +61,12 @@ export const ImageSlider = () => {
                 <motion.div
                     animate={{ opacity: 1 }}
                     initial={{ opacity: 0 }}>
-                    <FaArrowAltCircleLeft onClick={nextSlide} className="absolute top-1/2 left-8 text-5xl z-10 cursor-pointer select-none" />
-                    <FaArrowAltCircleRight onClick={prevSlide} className="absolute top-1/2 right-8 text-5xl z-10 cursor-pointer select-none" />
+                    <FaArrowLeft onClick={nextSlide} className="absolute top-1/2 left-20 text-6xl z-10 btn btn-outline rounded-none hover:rounded-lg" />
+                    <FaArrowRight onClick={prevSlide} className="absolute top-1/2 right-20 text-6xl z-10 btn btn-outline rounded-none hover:rounded-lg" />
                 </motion.div>
             }
             {!fetched
-                ? <button onClick={onbuttonclick} className="btn">Get Timetable</button>
+                ? <button onClick={onbuttonclick} className={loading ? 'btn btn-outline rounded-none hover:rounded-lg loading' : 'btn btn-outline rounded-none hover:rounded-lg'}>Get Timetable</button>
                 :
                 data.map((timetable, index) => {
                     return (<div key={index} className='grid gap-6 justify-items-center' >
