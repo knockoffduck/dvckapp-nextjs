@@ -61,8 +61,8 @@ export const ImageSlider = () => {
                 <motion.div
                     animate={{ opacity: 1 }}
                     initial={{ opacity: 0 }}>
-                    <FaArrowLeft onClick={nextSlide} className="absolute top-1/2 left-20 text-6xl z-10 btn btn-outline rounded-none hover:rounded-lg" />
-                    <FaArrowRight onClick={prevSlide} className="absolute top-1/2 right-20 text-6xl z-10 btn btn-outline rounded-none hover:rounded-lg" />
+                    <FaArrowLeft onClick={nextSlide} className="absolute tablet:top-1/2 mobile:bottom-1/4 left-20 text-6xl z-10 btn btn-outline rounded-none hover:rounded-lg" />
+                    <FaArrowRight onClick={prevSlide} className="absolute tablet:top-1/2 mobile:bottom-1/4 right-20 text-6xl z-10 btn btn-outline rounded-none hover:rounded-lg" />
                 </motion.div>
             }
             {!fetched
@@ -77,7 +77,7 @@ export const ImageSlider = () => {
                             <motion.div
                                 animate={{ opacity: 1 }}
                                 initial={{ opacity: 0 }}
-                                className="relative tablet:h-[70vh] tablet:w-[65vw]">
+                                className="relative mobile:h-[25vh] mobile:w-[75vw] tablet:h-[70vh] tablet:w-[65vw]">
                                 <Image src={timetable.timetable_url} fill alt={timetable.date} priority className="rounded-lg" />
                             </motion.div>
                         )}
