@@ -9,7 +9,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-black">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-base-300">
       <Head>
         <title>dvck</title>
         <link rel="icon" href="/favicon.ico" />
@@ -36,8 +36,9 @@ export default function Home() {
             }}
             />
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center gap-5">
             <Link href='/work' className="relative btn btn-outline rounded-none hover:rounded-lg">Timetable</Link>
+            <Link href='/UpBank' className="relative btn btn-outline rounded-none hover:rounded-lg">Bank</Link>
           </div>
         </div>
       </div>

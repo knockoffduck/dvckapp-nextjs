@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
@@ -56,35 +57,41 @@ export const ImageSlider = () => {
 
 
     return (
-        <div className="flex relative w-screen h-screen justify-center items-center">
-            {fetched &&
-                <motion.div
-                    animate={{ opacity: 1 }}
-                    initial={{ opacity: 0 }}>
-                    <FaArrowLeft onClick={nextSlide} className="absolute tablet:top-1/2 mobile:bottom-1/4 left-20 text-6xl z-10 btn btn-outline rounded-none hover:rounded-lg" />
-                    <FaArrowRight onClick={prevSlide} className="absolute tablet:top-1/2 mobile:bottom-1/4 right-20 text-6xl z-10 btn btn-outline rounded-none hover:rounded-lg" />
-                </motion.div>
-            }
-            {!fetched
-                ? <button onClick={onbuttonclick} className={loading ? 'btn btn-outline rounded-none hover:rounded-lg loading' : 'btn btn-outline rounded-none hover:rounded-lg'}>Get Timetable</button>
-                :
-                data.map((timetable, index) => {
-                    return (<div key={index} className='grid gap-6 justify-items-center' >
-                        {index === current && (
-                            <h3 className='text-center text-4xl font-bold'> {timetable.date}</h3>
-                        )}
-                        {index === current && (
-                            <motion.div
-                                animate={{ opacity: 1 }}
-                                initial={{ opacity: 0 }}
-                                className="relative mobile:h-[25vh] mobile:w-[75vw] tablet:h-[70vh] tablet:w-[65vw]">
-                                <Image src={timetable.timetable_url} fill alt={timetable.date} priority className="rounded-lg" />
-                            </motion.div>
-                        )}
+        <div className='w-screen h-screen' >
+            <header className='flex items-center relative h-[10vh] p-7'>
+                <Link href="/" className='font-bold text-4xl z-10' >dvck</Link>
 
-                    </div>
-                    )
-                })}
+            </header>
+            <div className="flex relative h-[90vh] justify-center items-center">
+                {fetched &&
+                    <motion.div
+                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0 }}>
+                        <FaArrowLeft onClick={nextSlide} className="absolute tablet:top-1/2 mobile:bottom-1/4 left-20 text-6xl z-10 btn btn-outline rounded-none hover:rounded-lg" />
+                        <FaArrowRight onClick={prevSlide} className="absolute tablet:top-1/2 mobile:bottom-1/4 right-20 text-6xl z-10 btn btn-outline rounded-none hover:rounded-lg" />
+                    </motion.div>
+                }
+                {!fetched
+                    ? <button onClick={onbuttonclick} className={loading ? 'btn btn-outline rounded-none hover:rounded-lg loading' : 'btn btn-outline rounded-none hover:rounded-lg'}>Get Timetable</button>
+                    :
+                    data.map((timetable, index) => {
+                        return (<div key={index} className='grid gap-6 justify-items-center' >
+                            {index === current && (
+                                <h3 className='text-center text-4xl font-bold'> {timetable.date}</h3>
+                            )}
+                            {index === current && (
+                                <motion.div
+                                    animate={{ opacity: 1 }}
+                                    initial={{ opacity: 0 }}
+                                    className="relative mobile:h-[25vh] mobile:w-[75vw] tablet:h-[70vh] tablet:w-[65vw]">
+                                    <Image src={timetable.timetable_url} fill alt={timetable.date} priority className="rounded-lg" />
+                                </motion.div>
+                            )}
+
+                        </div>
+                        )
+                    })}
+            </div>
         </div>
 
     )

@@ -6,6 +6,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    extend: {
+      dropShadow: {
+        'md': '0 35px 35px rgba(255, 255, 255, 1)'
+      }
+    },
     screens: {
       'mobile': '390px',
 
@@ -18,6 +23,9 @@ module.exports = {
       'desktop': '1280px',
       // => @media (min-width: 1280px) { ... }
     },
+  },
+  daisyui: {
+    themes: ["dark"],
   },
   plugins: [require('daisyui')],
 }
