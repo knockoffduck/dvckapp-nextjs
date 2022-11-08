@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-chartjs-2';
 import { BiHomeAlt } from 'react-icons/bi';
-
+import GetAccountData from '../components/getAccountData';
 
 async function fetchProducts(url) {
     const response = await fetch(url, {
@@ -23,8 +23,6 @@ async function fetchProducts(url) {
 export default function UpBank() {
     let url = 'https://dvckapp.xyz/chart'
     const [fetched, setFetched] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [clicked, setClicked] = useState(false)
     const [data, setData] = useState({})
 
     useEffect(() => {
@@ -69,7 +67,14 @@ export default function UpBank() {
                 <div className="grid grid-cols-3 grid-rows-5 gap-6 pr-8">
                     <div className="box h-[100%] row-span-2">
                         <h3 className='py-4 text-2xl'>Accounts Summary</h3>
-                        <div className='bg-[#24292d] drop-shadow-2xl h-[25vh] rounded-lg'></div>
+                        <div className='bg-[#24292d] drop-shadow-2xl h-[25vh] rounded-lg flex justify-between items-center'>
+                            <div className='flex flex-col w-[50%] '>
+                                <h4 className='px-5 text-2xl text-center '>Total Balance</h4>
+                                <h4 className='px-5 text-lg text-center font-thin'>$3444</h4>
+
+                            </div>
+                            <GetAccountData />
+                        </div>
                     </div>
                     <div className="box h-[100%] row-span-2">
                         <h3 className='py-4 text-2xl'>Top Activity</h3>
@@ -82,8 +87,8 @@ export default function UpBank() {
                     <div className="box h-[100%] row-span-3 col-span-2">
                         <h3 className='py-4 text-2xl'>Monthly Spending Graph</h3>
                         <div className='relative bg-[#24292d] drop-shadow-2xl rounded-lg h-[75%] flex justify-center items-center'>
-                            {fetched ? <Chart id='chart' className='p-5' type='line' data={data} options={{ elements: { point: { pointHitRadius: 25 } }, tension: 0.3, maintainAspectRatio: false, scales: { y: { grid: { color: 'rgba(46, 50, 61, 1)' } }, x: { grid: { color: 'rgba(46, 50, 61, 0)' } } } }} /> :
-                                <button onClick={onbuttonclick} className='btn'>Get chart</button>
+                            {fetched ? <Chart id='chart' className='p-5' type='line' data={data} options={{ elements: { point: { pointHitRadius: 25, pointRadius: 0 } }, tension: 0.3, maintainAspectRatio: false, scales: { y: { grid: { color: 'rgba(46, 50, 61, 1)' } }, x: { grid: { color: 'rgba(46, 50, 61, 0)' } } } }} /> :
+                                <button onClick={onbuttonclick} className='btn loading'></button>
                             }
                         </div>
                     </div>
