@@ -2,7 +2,7 @@ import 'chart.js/auto';
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-chartjs-2';
 
-async function fetchProducts(url) {
+async function fetchData(url) {
     const response = await fetch(url, {
         next: {
             revalidate: 20,
@@ -40,7 +40,7 @@ export default function GetAccountData() {
         let url = 'https://dvckapp.xyz/accounts'
         const final = { Total: 0, Accounts: 0, AccountLabels: [], AccountBalances: [] }
         try {
-            const result = await fetchProducts(url)
+            const result = await fetchData(url)
             result.map((account) => {
                 final.Total += account.Balance
                 final.Accounts += 1
