@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useState } from 'react';
 
 async function fetchProducts(url) {
@@ -28,12 +29,12 @@ export default function Coles() {
     }
 
     return (
-        <div className='grid bg-[#191c21] h-full w-screen gap-6 pb-20 place-items-center'>
+        <div className='grid bg-[#191c21] h-full w-screen gap-6 place-items-center'>
             <div className='h-[70px] w-full p-6'>
                 <h1 className='text-4xl font-bold'>Shift Details</h1>
             </div>
             {!fetched ? <button onClick={() => getShiftData()} className={!loading ? 'btn w-[150px]' : 'btn loading'}>{!loading ? 'Get Data' : 'Fetching Data'}</button> :
-                <div className='grid grid-cols-1 place-items-center'>
+                <div className='grid grid-cols-1 place-items-center pb-14'>
                     <div className='flex flex-col bg-[#24292d] drop-shadow-2xl w-[332px] h-[664px] rounded-lg'>
                         <div className='grid place-items-center h-[70px] w-full pt-3'>
                             <h2 className='font-semibold text-2xl'>14 - 21 November 2022</h2>
@@ -64,6 +65,30 @@ export default function Coles() {
                     </div>
                 </div>
             }
+            <div className='flex flex-col bg-[#24292d] drop-shadow-2xl w-full rounded-xl'>
+                <div className='grid h-[70px] w-full p-6'>
+                    <h2 className='text-2xl'>This Week's Shifts</h2>
+                </div>
+                <div className="grid px-6 pb-6 gap-8">
+                    {fetched && data.ShiftDetails.map((shift) => {
+                        return (
+                            <div className='grid grid-cols-3 grid-rows-1 bg-[#24292d] drop-shadow-2xl w-full h-[100px] rounded-xl justify-between'>
+                                <div className='flex flex-col justify-center px-6 w-[1/3]'>
+                                    <h3 className='text-lg'>{moment(shift.day, 'ddd').format('ddd')} {moment.localeData().ordinal(shift.date)}</h3>
+                                    <h4 className='text-white text-thin text-opacity-50'>{shift.totalHours} Hours</h4>
+                                </div>
+                                <div className='flex flex-col justify-center px-6 w-[1/3]'>
+                                    <h3 className='text-white text-opacity-50 text-lg'>{shift.start} - {shift.end}</h3>
+                                </div>
+                                <div className='flex flex-col justify-center px-6 w-[1/3]'>
+                                    <h3 className='text-2xl font-bold text-center'>${shift.pay.toFixed(2)}</h3>
+                                </div>
+                            </div>
+                        )
+                    })}
+
+                </div>
+            </div>
         </div>
     )
 }
