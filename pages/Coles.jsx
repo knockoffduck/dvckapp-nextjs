@@ -67,12 +67,12 @@ export default function Coles() {
             }
             <div className='flex flex-col bg-[#24292d] drop-shadow-2xl w-full rounded-xl'>
                 <div className='grid h-[70px] w-full p-6'>
-                    <h2 className='text-2xl'>This Week's Shifts</h2>
+                    <h2 className='text-2xl'>This Week{`&apos;`}s Shifts</h2>
                 </div>
                 <div className="grid px-6 pb-6 gap-8">
-                    {fetched && data.ShiftDetails.map((shift) => {
+                    {fetched && data.ShiftDetails.map((shift, index) => {
                         return (
-                            <div className='grid grid-cols-3 grid-rows-1 bg-[#24292d] drop-shadow-2xl w-full h-[100px] rounded-xl justify-between'>
+                            <div key={index} className='grid grid-cols-3 grid-rows-1 bg-[#24292d] drop-shadow-2xl w-full h-[100px] rounded-xl justify-between'>
                                 <div className='flex flex-col justify-center px-6 w-[1/3]'>
                                     <h3 className='text-lg'>{moment(shift.day, 'ddd').format('ddd')} {moment.localeData().ordinal(shift.date)}</h3>
                                     <h4 className='text-white text-thin text-opacity-50'>{shift.totalHours} Hours</h4>
