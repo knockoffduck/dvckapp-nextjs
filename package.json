@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "chart.js": "^3.9.1",
-    "daisyui": "^2.38.0",
+    "chartjs-plugin-datalabels": "^2.1.0",
+    "daisyui": "^2.40.1",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.1",
     "framer-motion": "^7.6.4",
+    "moment": "^2.29.4",
     "next": "13.0.1",
     "prop-type": "^0.0.1",
     "prop-types": "^15.8.1",
