@@ -35,17 +35,13 @@ export const ImageSlider = () => {
         setCurrrent(current === 0 ? length - 1 : current - 1)
     }
 
-    console.log(current)
 
     const onbuttonclick = async () => {
         setClicked(true)
-        console.log(clicked)
         try {
             setLoading(true)
             const data = await fetchProducts(url)
             setFetched(true)
-            console.log('FETCHED')
-            console.log('result is: ', data);
             setData(data.reverse())
             setLength(await data.length)
             await setLoading(false)

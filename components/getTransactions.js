@@ -25,7 +25,7 @@ export default function GetTransactions() {
         const url = 'https://dvckapp.xyz/transactions'
         const transactionData = await fetchData(url)
         let purchaseData = transactionData.filter((transaction) => {
-            return transaction.Amount < 0
+            return transaction.Type == 'Credit'
         })
         setData(await purchaseData)
         setFetched(true)
