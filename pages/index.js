@@ -16,7 +16,7 @@ export default function Home() {
       </Head>
       <div className="flex h-[98vh] place-items-center">
 
-        <div className="grid gap-5 m-auto justify-center">
+        <div className="grid gap-5 m-auto place-items-center">
 
           <div className='tablet:text-9xl mobile:text-7xl font-bold text-white tracking-tight'>
             <Typewriter options={{ loop: true, autoStart: true }} onInit={(typewriter) => {
@@ -36,7 +36,7 @@ export default function Home() {
             }}
             />
           </div>
-          <div className="flex items-center justify-center gap-5">
+          <div className="flex items-center gap-5">
             <Link href='/work' className="relative btn btn-outline rounded-none hover:rounded-lg">Timetable</Link>
             <Link href='/UpBank' className="relative btn btn-outline rounded-none hover:rounded-lg">Bank</Link>
             <Link href='/Coles' className="relative btn btn-outline rounded-none hover:rounded-lg">Coles</Link>

@@ -1,5 +1,7 @@
 import moment from 'moment';
+import Link from 'next/link';
 import React, { useState } from 'react';
+import { BiHomeAlt } from 'react-icons/bi';
 
 async function fetchProducts(url) {
     const response = await fetch(url, {
@@ -30,8 +32,11 @@ export default function Coles() {
 
     return (
         <div className={fetched ? 'grid bg-[#191c21] h-full w-screen gap-6 place-items-center' : 'grid bg-[#191c21] h-screen w-screen gap-6'}>
-            <div className='h-[70px] w-full p-6'>
+            <div className='flex h-[100px] w-full p-6 justify-between items-center'>
                 <h1 className='text-4xl font-bold'>Shift Details</h1>
+                <Link href='/'>
+                    <BiHomeAlt className='text-3xl'></BiHomeAlt>
+                </Link>
             </div>
             {!fetched ? <div className='flex justify-center'><button onClick={() => getShiftData()} className={!loading ? 'btn w-[150px]' : 'btn loading'}>{!loading ? 'Get Data' : 'Fetching Data'}</button></div> :
                 <div className='grid grid-cols-1 place-items-center pb-14'>
@@ -43,23 +48,23 @@ export default function Coles() {
                         <div className='grid place-items-center p-5 gap-14'>
                             <div>
                                 <h4 className='font-thin text-center text-xl'>Net Income</h4>
-                                <h3 className='font-bold text-center text-2xl'>${data.Summary.NetIncome}</h3>
+                                <h3 className='font-bold text-center text-2xl'>${data.Summary[0].NetIncome}</h3>
                             </div>
                             <div>
                                 <h4 className='font-thin text-center text-xl'>Gross Income</h4>
-                                <h3 className='font-bold text-center text-2xl'>${data.Summary.GrossIncome}</h3>
+                                <h3 className='font-bold text-center text-2xl'>${data.Summary[0].GrossIncome}</h3>
                             </div>
                             <div>
                                 <h4 className='font-thin text-center text-xl'>Base Hours</h4>
-                                <h3 className='font-bold text-center text-2xl'>{data.Summary.BaseHours}</h3>
+                                <h3 className='font-bold text-center text-2xl'>{data.Summary[0].BaseHours}</h3>
                             </div>
                             <div>
                                 <h4 className='font-thin text-center text-xl'>Penalty Hours</h4>
-                                <h3 className='font-bold text-center text-2xl'>{data.Summary.PenaltyHours}</h3>
+                                <h3 className='font-bold text-center text-2xl'>{data.Summary[0].PenaltyHours}</h3>
                             </div>
                             <div>
                                 <h4 className='font-thin text-center text-xl'>Total Hours</h4>
-                                <h3 className='font-bold text-center text-2xl'>{data.Summary.TotalHours}</h3>
+                                <h3 className='font-bold text-center text-2xl'>{data.Summary[0].TotalHours}</h3>
                             </div>
                         </div>
                     </div>
@@ -75,14 +80,14 @@ export default function Coles() {
                             return (
                                 <div key={index} className='grid grid-cols-3 grid-rows-1 bg-[#24292d] drop-shadow-2xl w-full h-[100px] rounded-xl justify-between'>
                                     <div className='flex flex-col justify-center pl-6 w-[1/3]'>
-                                        <h3 className=''>{moment(shift.day, 'ddd').format('ddd')} {moment.localeData().ordinal(shift.date)}</h3>
-                                        <h4 className='text-white text-thin text-opacity-50 text-sm'>{shift.totalHours} Hours</h4>
+                                        <h3 className=''>{moment(shift.Date, 'DD/MM/YYYY').format('DD')} {moment(shift.Day, 'ddd').format('ddd')}</h3>
+                                        <h4 className='text-white text-thin text-opacity-50 text-sm'>{shift.TotalHours} Hours</h4>
                                     </div>
                                     <div className='flex flex-col justify-center w-[1/3]'>
-                                        <h3 className='text-white text-opacity-50 text-sm text-center'>{shift.start} - {shift.end}</h3>
+                                        <h3 className='text-white text-opacity-50 text-sm text-center'>{shift.Start} - {shift.End}</h3>
                                     </div>
                                     <div className='flex flex-col justify-center px-6 w-[1/3]'>
-                                        <h3 className='text-xl font-bold text-center'>${shift.pay.toFixed(2)}</h3>
+                                        <h3 className='text-xl font-bold text-center'>${shift.Pay.toFixed(2)}</h3>
                                     </div>
                                 </div>
                             )
