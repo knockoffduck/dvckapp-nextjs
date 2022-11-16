@@ -39,8 +39,6 @@ export default function Home() {
           <div className="flex items-center gap-5">
             <Link href='/work' className="relative btn btn-outline rounded-none hover:rounded-lg">Timetable</Link>
             <Link href='/UpBank' className="relative btn btn-outline rounded-none hover:rounded-lg">Bank</Link>
-            <Link href='/Coles' className="relative btn btn-outline rounded-none hover:rounded-lg">Coles</Link>
-
           </div>
         </div>
       </div>
