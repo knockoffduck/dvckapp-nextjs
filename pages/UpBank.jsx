@@ -24,7 +24,7 @@ async function fetchProducts(url) {
 
 
 export default function UpBank() {
-    let url = 'https://dvckapp.xyz/chart'
+    let url = 'https://dvckapp.xyz/alkwjfowej'
     const [fetched, setFetched] = useState(false)
     const [data, setData] = useState({})
 
