@@ -40,6 +40,7 @@ export default function Home() {
             <Link href='/work' className="relative btn btn-outline rounded-none hover:rounded-lg">Timetable</Link>
             <Link href='/UpBank' className="relative btn btn-outline rounded-none hover:rounded-lg">Bank</Link>
             <Link href='/Test' className="relative btn btn-outline rounded-none hover:rounded-lg">Test</Link>
+            <Link href='/Test2' className="relative btn btn-outline rounded-none hover:rounded-lg">Test2</Link>
           </div>
         </div>
       </div>
