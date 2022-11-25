@@ -1,4 +1,4 @@
-import { ImageSlider } from "../components/getTimetable";
+import ShiftViewer from "../components/ShiftViewer";
 
 
 
@@ -7,10 +7,8 @@ import { ImageSlider } from "../components/getTimetable";
 export default function Work() {
 
     return (
-        <div className="flex flex-col items-center justify-center ">
-            <div className="flex h-screen place-items-center">
-                <ImageSlider />
-            </div>
+        <div className="bg-[#1A1C21] flex flex-col items-center justify-center w-screen">
+            <ShiftViewer />
         </div>
     )
 }

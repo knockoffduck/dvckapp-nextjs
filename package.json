@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ramonak/react-progress-bar": "^5.0.3",
+    "bootstrap": "^5.2.2",
     "chart.js": "^3.9.1",
     "chartjs-plugin-datalabels": "^2.1.0",
     "daisyui": "^2.40.1",
@@ -20,9 +22,11 @@
     "prop-type": "^0.0.1",
     "prop-types": "^15.8.1",
     "react": "18.2.0",
+    "react-bootstrap": "^2.6.0",
     "react-chartjs-2": "^4.3.1",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
+    "socket.io-client": "^4.5.3",
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {

@@ -8,7 +8,10 @@ module.exports = {
   theme: {
     extend: {
       dropShadow: {
-        'md': '0 35px 35px rgba(255, 255, 255, 1)'
+        'md': '5px 12px 2px rgba(0, 0, 0, 0.25);'
+      },
+      boxShadow: {
+        'md': '-1px 5px 12px 2px rgba(0, 0, 0, 0.25)'
       }
     },
     screens: {
